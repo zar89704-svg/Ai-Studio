@@ -1,0 +1,40 @@
+/* Global Body Setup & Background Theme */
+body {
+  background-color: #0f0c1b;
+  color: #f1f0f7;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Hide Scrollbar Utilities */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Active Navigation Buttons */
+.nav-btn.active {
+  background-color: rgba(124, 77, 255, 0.2);
+  color: #ffffff;
+  border: 1px solid rgba(124, 77, 255, 0.3);
+}
+
+/* Line Clamp for History Logs */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Transitions */
+.tab-content {
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
