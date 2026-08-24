@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f0c1b">
+  <title>AI Studio — All-in-One AI Suite</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+  <!-- Your CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="min-h-screen bg-[#0f0c1b] text-slate-100">
+
+  <!-- ================= HEADER ================= -->
+  <header class="sticky top-0 z-50 border-b border-violet-900/40 bg-[#0f0c1b]/95 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="h-16 flex items-center justify-between">
+
+        <button onclick="switchTab('home')" class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-violet-600 flex items-center justify-center shadow-lg shadow-violet-900/30">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </div>
+
+          <div class="text-left">
+            <div class="font-bold text-white">AI Studio</div>
+            <div class="text-[10px] text-violet-300">All-in-One AI Suite</div>
+          </div>
+        </button>
+
+        <div class="hidden md:flex items-center gap-4">
+          <div class="text-right">
+            <div class="text-[10px] text-slate-400">လက်ကျန် ခရက်ဒစ်</div>
+            <div id="userCreditDisplay" class="font-bold text-violet-300">
+              20 Credits
+            </div>
+          </div>
+
+          <button
+            onclick="switchTab('store')"
+            class="bg-violet-600 hover:bg-violet-500 px-4 py-2 rounded-xl text-xs font-bold"
+          >
+            <i class="fa-solid fa-cart-shopping mr-1"></i>
+            ခရက်ဒစ် ဝယ်ယူရန်
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ================= NAVIGATION ================= -->
+  <nav class="sticky top-16 z-40 border-b border-violet-900/30 bg-[#120e20]/95 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-4 overflow-x-auto scrollbar-hide">
+      <div class="flex gap-2 py-2 min-w-max">
+
+        <button class="nav-btn active px-4 py-2 rounded-xl text-xs" onclick="switchTab('home')">
+          <i class="fa-solid fa-house mr-1"></i>
+          ပင်မစာမျက်နှာ
+        </button>
+
+        <button class="nav-btn px-4 py-2 rounded-xl text-xs" onclick="switchTab('chat')">
+          <i class="fa-solid fa-comments mr-1"></i>
+          AI Chat
+        </button>
+
+        <button class="nav-btn px-4 py-2 rounded-xl text-xs" onclick="switchTab('tools')">
+          <i class="fa-solid fa-wand-magic-sparkles mr-1"></i>
+          AI Tools Suite
+        </button>
+
+        <button class="nav-btn px-4 py-2 rounded-xl text-xs" onclick="switchTab('media')">
+          <i class="fa-solid fa-photo-film mr-1"></i>
+          Media & Vision
+        </button>
+
+        <button class="nav-btn px-4 py-2 rounded-xl text-xs" onclick="switchTab('history')">
+          <i class="fa-solid fa-clock-rotate-left mr-1"></i>
+          မှတ်တမ်းများ
+        </button>
+
+        <button class="nav-btn px-4 py-2 rounded-xl text-xs" onclick="switchTab('store')">
+          <i class="fa-solid fa-coins mr-1"></i>
+          Credit Store
+        </button>
+
+        <button class="nav-btn px-4 py-2 rounded-xl text-xs" onclick="switchTab('admin')">
+          <i class="fa-solid fa-shield-halved mr-1"></i>
+          Admin Dashboard
+        </button>
+
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ================= MAIN ================= -->
+  <main class="max-w-7xl mx-auto px-4 py-6">
+
+
+    <!-- ================= HOME ================= -->
+    <section id="tab-home" class="tab-content">
+
+      <div class="grid lg:grid-cols-2 gap-6 items-center">
+
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-300 text-xs mb-5">
+            <i class="fa-solid fa-sparkles"></i>
+            AI Powered Workspace
+          </div>
+
+          <h1 class="text-4xl md:text-6xl font-black leading-tight">
+            All-in-One
+            <span class="text-violet-400">AI Assistant</span>
+          </h1>
+
+          <p class="mt-5 text-slate-400 text-sm md:text-base leading-7 max-w-xl">
+            လူကြီးမင်း၏ လုပ်ငန်းများနှင့် တီထွင်ဖန်တီးမှုများအတွက်
+            AI စွမ်းအားကို တစ်နေရာတည်းတွင် အသုံးပြုနိုင်ပါသည်။
+          </p>
+
+          <p class="mt-2 text-slate-500 text-sm leading-6 max-w-xl">
+            စာမူရေးသားခြင်း၊ စျေးကွက်ရှာဖွေခြင်း၊ Script ဖန်တီးခြင်း၊
+            ရုပ်ပုံစစ်ဆေးခြင်းနှင့် Text-to-Speech အထိ အသုံးပြုနိုင်ပါသည်။
+          </p>
+
+          <div class="flex flex-wrap gap-3 mt-7">
+
+            <button
+              onclick="switchTab('chat')"
+              class="bg-violet-600 hover:bg-violet-500 px-5 py-3 rounded-xl text-sm font-bold"
+            >
+              <i class="fa-solid fa-robot mr-2"></i>
+              စတင် အသုံးပြုမည်
+            </button>
+
+            <button
+              onclick="switchTab('tools')"
+              class="border border-violet-700/50 hover:bg-violet-900/30 px-5 py-3 rounded-xl text-sm font-bold"
+            >
+              AI Tools ကြည့်မည်
+            </button>
+
+          </div>
+        </div>
+
+
+        <div class="relative">
+          <div class="absolute inset-0 bg-violet-600/20 blur-3xl"></div>
+
+          <div class="relative bg-violet-950/40 border border-violet-800/40 rounded-3xl p-6 shadow-2xl">
+
+            <div class="flex items-center justify-between mb-5">
+              <div>
+                <div class="text-xs text-slate-400">AI Studio</div>
+                <div class="text-lg font-bold">Creative Workspace</div>
+              </div>
+
+              <div class="w-10 h-10 rounded-xl bg-violet-600/20 text-violet-300 flex items-center justify-center">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+
+              <div class="bg-violet-900/30 rounded-2xl p-4 border border-violet-800/30">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-xl bg-violet-600/20 flex items-center justify-center">
+                    <i class="fa-solid fa-pen-nib text-violet-300"></i>
+                  </div>
+
+                  <div>
+                    <div class="text-sm font-bold">AI Copywriter</div>
+                    <div class="text-xs text-slate-400">စာမူများကို AI ဖြင့် ဖန်တီးပါ</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-violet-900/30 rounded-2xl p-4 border border-violet-800/30">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-xl bg-violet-600/20 flex items-center justify-center">
+                    <i class="fa-solid fa-bullhorn text-violet-300"></i>
+                  </div>
+
+                  <div>
+                    <div class="text-sm font-bold">Marketing Hub</div>
+                    <div class="text-xs text-slate-400">Marketing content ဖန်တီးပါ</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-violet-900/30 rounded-2xl p-4 border border-violet-800/30">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-xl bg-violet-600/20 flex items-center justify-center">
+                    <i class="fa-solid fa-image text-violet-300"></i>
+                  </div>
+
+                  <div>
+                    <div class="text-sm font-bold">Vision AI</div>
+                    <div class="text-xs text-slate-400">ရုပ်ပုံများကို AI ဖြင့် စစ်ဆေးပါ</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- QUICK TOOLS -->
+      <div class="mt-12">
+
+        <div class="flex items-end justify-between mb-5">
+          <div>
+            <div class="text-xs text-violet-400 font-bold uppercase tracking-wider">
+              Quick Access
+            </div>
+
+            <h2 class="text-2xl font-bold mt-1">
+              လျှင်မြန်စွာ သုံးနိုင်သော AI Tool များ
+            </h2>
+          </div>
+        </div>
+
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+          <button onclick="openTool('copywriter')" class="text-left bg-violet-950/30 hover:bg-violet-900/40 border border-violet-800/40 rounded-2xl p-5 transition">
+            <i class="fa-solid fa-pen-nib text-violet-400 text-xl"></i>
+            <h3 class="font-bold mt-4">AI Copywriter</h3>
+            <p class="text-xs text-slate-400 mt-1">ဆောင်းပါးနှင့် စာမူများ ဖန်တီးရန်</p>
+            <span class="text-[10px] text-violet-300 mt-3 block">2 Credits</span>
+          </button>
+
+          <button onclick="openTool('marketing')" class="text-left bg-violet-950/30 hover:bg-violet-900/40 border border-violet-800/40 rounded-2xl p-5 transition">
+            <i class="fa-solid fa-bullhorn text-violet-400 text-xl"></i>
+            <h3 class="font-bold mt-4">Marketing Hub</h3>
+            <p class="text-xs text-slate-400 mt-1">ကြော်ငြာနှင့် စျေးကွက်စာမူများ</p>
+            <span class="text-[10px] text-violet-300 mt-3 block">2 Credits</span>
+          </button>
+
+          <button onclick="openTool('script')" class="text-left bg-violet-950/30 hover:bg-violet-900/40 border border-violet-800/40 rounded-2xl p-5 transition">
+            <i class="fa-solid fa-film text-violet-400 text-xl"></i>
+            <h3 class="font-bold mt-4">Script Creator</h3>
+            <p class="text-xs text-slate-400 mt-1">ဗီဒီယိုနှင့် ဇာတ်ညွှန်းများ</p>
+            <span class="text-[10px] text-violet-300 mt-3 block">3 Credits</span>
+          </button>
+
+          <button onclick="openTool('recap')" class="text-left bg-violet-950/30 hover:bg-violet-900/40 border border-violet-800/40 rounded-2xl p-5 transition">
+            <i class="fa-solid fa-clapperboard text-violet-400 text-xl"></i>
+            <h3 class="font-bold mt-4">Movie Recap Script</h3>
+            <p class="text-xs text-slate-400 mt-1">ရုပ်ရှင်အကျဉ်းချုပ် Script</p>
+            <span class="text-[10px] text-violet-300 mt-3 block">3 Credits</span>
+          </button>
+
+          <button onclick="switchTab('media')" class="text-left bg-violet-950/30 hover:bg-violet-900/40 border border-violet-800/40 rounded-2xl p-5 transition">
+            <i class="fa-solid fa-eye text-violet-400 text-xl"></i>
+            <h3 class="font-bold mt-4">Vision Understanding</h3>
+            <p class="text-xs text-slate-400 mt-1">ပုံရိပ်များ စစ်ဆေးမေးမြန်းရန်</p>
+            <span class="text-[10px] text-violet-300 mt-3 block">5 Credits</span>
+          </button>
+
+          <button onclick="switchTab('media'); switchMediaSubTab('tts')" class="text-left bg-violet-950/30 hover:bg-violet-900/40 border border-violet-800/40 rounded-2xl p-5 transition">
+            <i class="fa-solid fa-volume-high text-violet-400 text-xl"></i>
+            <h3 class="font-bold mt-4">Text-to-Speech</h3>
+            <p class="text-xs text-slate-400 mt-1">စာသားမှ အသံပြောင်းရန်</p>
+            <span class="text-[10px] text-violet-300 mt-3 block">2 Credits</span>
+          </button>
+
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ================= CHAT ================= -->
+    <section id="tab-chat" class="tab-content hidden">
+
+      <div class="max-w-4xl mx-auto">
+
+        <div class="mb-5">
+          <div class="text-xs text-violet-400 font-bold">AI ASSISTANT</div>
+          <h2 class="text-2xl font-bold mt-1">Gemini AI Assistant Chat</h2>
+          <p class="text-xs text-slate-400 mt-1">
+            ၁ ခေါက်မေးလျှင် ၁ Credit နုတ်ယူပါမည်
+          </p>
+        </div>
+
+
+        <div class="bg-violet-950/30 border border-violet-800/40 rounded-3xl overflow-hidden">
+
+          <div id="chatContainer" class="h-[55vh] overflow-y-auto p-5 space-y-4">
+
+            <div class="flex gap-3 items-start">
+
+              <div class="w-8 h-8 rounded-xl bg-violet-500/20 border border-violet-500/30 text-violet-400 flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-robot"></i>
+              </div>
+
+              <div class="bg-violet-800/60 border border-violet-700/50 rounded-2xl p-4 text-xs md:text-sm text-slate-200 max-w-[85%] leading-relaxed">
+                မင်္ဂလာပါ! ကျွန်တော်က AI Assistant Studio ဖြစ်ပါတယ်။
+                ဘာများ ကူညီပေးရမလဲခင်ဗျာ။
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="border-t border-violet-800/40 p-4">
+
+            <div class="flex gap-2">
+
+              <input
+                id="chatInput"
+                type="text"
+                placeholder="AI ကို မေးမြန်းပါ..."
+                class="flex-1 bg-violet-900/50 border border-violet-700/50 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-violet-500"
+                onkeydown="if(event.key==='Enter') sendChatMessage()"
+              >
+
+              <button
+                onclick="sendChatMessage()"
+                class="w-12 rounded-xl bg-violet-600 hover:bg-violet-500"
+              >
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+
+              <button
+                onclick="clearChat()"
+                class="px-4 rounded-xl border border-violet-700/50 text-xs"
+              >
+                ရှင်းလင်းမည်
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= TOOLS ================= -->
+    <section id="tab-tools" class="tab-content hidden">
+
+      <div class="mb-6">
+        <div class="text-xs text-violet-400 font-bold">AI TOOLS SUITE</div>
+        <h2 class="text-2xl font-bold mt-1">သီးသန့် AI ရေးသားပေးစနစ်များ</h2>
+        <p class="text-xs text-slate-400 mt-1">
+          သင့်လုပ်ငန်းနှင့် အကြောင်းအရာများအတွက် အသုံးပြုနိုင်ပါသည်။
+        </p>
+      </div>
+
+
+      <div class="grid lg:grid-cols-[280px_1fr] gap-5">
+
+        <div class="bg-violet-950/30 border border-violet-800/40 rounded-3xl p-5">
+
+          <label class="text-xs text-slate-300">
+            AI Tool ရွေးချယ်ပါ
+          </label>
+
+          <select
+            id="toolSelector"
+            onchange="onToolSelectChange()"
+            class="w-full mt-2 bg-violet-900 border border-violet-700 text-white text-sm rounded-xl px-3 py-3 focus:outline-none"
+          >
+            <option value="copywriter">AI Copywriter — 2 Credits</option>
+            <option value="marketing">Marketing Hub — 2 Credits</option>
+            <option value="script">Script Creator — 3 Credits</option>
+            <option value="caption">Social Caption — 1 Credit</option>
+            <option value="product">Product Description — 2 Credits</option>
+            <option value="recap">Movie Recap Script — 3 Credits</option>
+          </select>
+
+        </div>
+
+
+        <div class="bg-violet-950/30 border border-violet-800/40 rounded-3xl p-5">
+
+          <div id="toolFormInputs" class="space-y-4"></div>
+
+          <button
+            id="generateToolBtn"
+            onclick="executeToolGeneration()"
+            class="w-full mt-5 bg-violet-600 hover:bg-violet-500 py-3 rounded-xl text-sm font-bold"
+          >
+            <i class="fa-solid fa-wand-magic-sparkles mr-2"></i>
+            စာမူစတင် ဖန်တီးမည်
+          </button>
+
+
+          <div id="toolResultBox" class="hidden mt-5">
+
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="font-bold text-sm">ထွက်ရှိလာသော စာမူ</h3>
+
+              <button
+                onclick="copyResultText()"
+                class="text-xs text-violet-300 hover:text-white"
+              >
+                <i class="fa-solid fa-copy mr-1"></i>
+                ကူးယူမည်
+              </button>
+            </div>
+
+            <div
+              id="toolResultContent"
+              class="bg-[#0b0913] border border-violet-800/40 rounded-2xl p-5 text-sm leading-7 whitespace-pre-wrap min-h-[180px]"
+            ></div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= MEDIA ================= -->
+    <section id="tab-media" class="tab-content hidden">
+
+      <div class="mb-6">
+        <div class="text-xs text-violet-400 font-bold">MEDIA & VISION</div>
+        <h2 class="text-2xl font-bold mt-1">Media & Vision AI Studio</h2>
+        <p class="text-xs text-slate-400 mt-1">
+          ရုပ်ပုံစစ်ဆေးခြင်းနှင့် အသံဖန်တီးခြင်းများ
+        </p>
+      </div>
+
+
+      <div class="flex gap-5 border-b border-violet-800/40 mb-6">
+
+        <button
+          id="mediaSubTabVision"
+          onclick="switchMediaSubTab('vision')"
+          class="pb-2 border-b-2 border-violet-400 text-violet-400 text-sm"
+        >
+          Vision Image Analysis
+        </button>
+
+        <button
+          id="mediaSubTabTts"
+          onclick="switchMediaSubTab('tts')"
+          class="pb-2 text-slate-400 hover:text-slate-200 text-sm"
+        >
+          Text-To-Speech
+        </button>
+
+      </div>
+
+
+      <!-- VISION -->
+      <div id="mediaVisionPanel">
+
+        <div class="max-w-3xl">
+
+          <div class="bg-violet-950/30 border border-violet-800/40 rounded-3xl p-5">
+
+            <label class="text-xs text-slate-300">
+              စစ်ဆေးလိုသော ဓာတ်ပုံအား တင်ပါ
+              <span class="text-slate-500">(JPEG, PNG, WebP)</span>
+            </label>
+
+            <input
+              id="visionImageInput"
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              onchange="previewVisionImage(event)"
+              class="block w-full mt-3 text-xs text-slate-400"
+            >
+
+            <div id="visionImagePreview" class="hidden mt-5">
+              <img
+                id="previewImgTag"
+                class="max-h-80 mx-auto rounded-2xl border border-violet-700/40"
+                alt="Preview"
+              >
+            </div>
+
+            <input
+              id="visionPromptInput"
+              type="text"
+              placeholder="ဒီပုံအကြောင်း ဘာသိချင်ပါသလဲ?"
+              class="w-full mt-4 bg-violet-900/60 border border-violet-700/50 rounded-xl px-4 py-3 text-sm focus:outline-none"
+            >
+
+            <button
+              id="analyzeVisionBtn"
+              onclick="executeVisionAnalysis()"
+              class="w-full mt-4 bg-violet-600 hover:bg-violet-500 py-3 rounded-xl text-sm font-bold"
+            >
+              <i class="fa-solid fa-eye mr-2"></i>
+              ပုံရိပ်အား AI ဖြင့် စစ်ဆေးမည်
+            </button>
+
+            <div
+              id="visionResultBox"
+              class="hidden mt-5 bg-[#0b0913] border border-violet-800/40 rounded-2xl p-5 text-sm leading-7 whitespace-pre-wrap"
+            ></div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- TTS -->
+      <div id="mediaTtsPanel" class="hidden">
+
+        <div class="max-w-3xl">
+
+          <div class="bg-violet-950/30 border border-violet-800/40 rounded-3xl p-5">
+
+            <label class="text-xs text-slate-300">
+              အသံပြောင်းလိုသော စာသား
+            </label>
+
+            <textarea
+              id="ttsTextInput"
+              rows="7"
+              placeholder="အသံပြောင်းလိုသော စာသားကို ရေးပါ..."
+              class="w-full mt-2 bg-violet-900/50 border border-violet-700/50 rounded-xl px-4 py-3 text-sm resize-none focus:outline-none"
+            ></textarea>
+
+            <button
+              onclick="executeTTS()"
+              class="w-full mt-4 bg-violet-600 hover:bg-violet-500 py-3 rounded-xl text-sm font-bold"
+            >
+              <i class="fa-solid fa-volume-high mr-2"></i>
+              အသံ စတင်ဖန်တီးမည်
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= HISTORY ================= -->
+    <section id="tab-history" class="tab-content hidden">
+
+      <div class="flex items-center justify-between mb-6">
+
+        <div>
+          <div class="text-xs text-violet-400 font-bold">HISTORY</div>
+          <h2 class="text-2xl font-bold mt-1">အသုံးပြုခဲ့သော မှတ်တမ်းများ</h2>
+          <p class="text-xs text-slate-400 mt-1">
+            ယခင် ဖန်တီးခဲ့သော စာမူနှင့် အချက်အလက်များ
+          </p>
+        </div>
+
+        <button
+          onclick="clearLocalHistory()"
+          class="border border-rose-800/50 text-rose-300 hover:bg-rose-900/20 px-4 py-2 rounded-xl text-xs"
+        >
+          <i class="fa-solid fa-trash mr-1"></i>
+          မှတ်တမ်းများ ရှင်းမည်
+        </button>
+
+      </div>
+
+      <div
+        id="historyLogList"
+        class="grid md:grid-cols-2 lg:grid-cols-3 gap-4"
+      ></div>
+
+    </section>
+
+
+    <!-- ================= STORE ================= -->
+    <section id="tab-store" class="tab-content hidden">
+
+      <div class="mb-6">
+
+        <div class="text-xs text-violet-400 font-bold">
+          CREDIT STORE
+        </div>
+
+        <h2 class="text-2xl font-bold mt-1">
+          Credit Store & Top-Up
+        </h2>
+
+        <p class="text-xs text-slate-400 mt-1">
+          ခရက်ဒစ် ဝယ်ယူရန်နှင့် KPay ငွေဖြည့်သွင်းရန်
+        </p>
+
+      </div>
+
+
+      <div class="grid md:grid-cols-2 gap-5">
+
+        <!-- STARTER -->
+        <div class="bg-violet-950/30 border border-violet-800/40 rounded-3xl p-6">
+
+          <div class="text-xs text-violet-300 font-bold">
+            STARTER PACK
+          </div>
+
+          <div class="text-4xl font-black mt-3">
+            50
+            <span class="text-sm text-slate-400 font-normal">Credits</span>
+          </div>
+
+          <div class="text-sm text-slate-300 mt-3">
+            15,000 MMK
+          </div>
+
+          <div class="text-xs text-slate-500 mt-1">
+            $4.99 USD
+          </div>
+
+          <button
+            onclick="selectPackage('starter', 15000, 50)"
+            class="w-full mt-6 bg-violet-600 hover:bg-violet-500 py-3 rounded-xl text-sm font-bold"
+          >
+            ဝယ်ယူမည်
+          </button>
+
+        </div>
+
+
+        <!-- PRO -->
+        <div class="bg-violet-600/10 border-2 border-violet-500/40 rounded-3xl p-6 relative">
+
+          <div class="absolute top-4 right-4 bg-violet-600 px-3 py-1 rounded-full text-[10px] font-bold">
+            လူကြိုက်အများဆုံး
+          </div>
+
+          <div class="text-xs text-violet-300 font-bold">
+            PRO PACK
+          </div>
+
+          <div class="text-4xl font-black mt-3">
+            200
+            <span class="text-sm text-slate-400 font-normal">Credits</span>
+          </div>
+
+          <div class="text-sm text-slate-300 mt-3">
+            45,000 MMK
+          </div>
+
+          <div class="text-xs text-slate-500 mt-1">
+            $14.99 USD
+          </div>
+
+          <button
+            onclick="selectPackage('pro', 45000, 200)"
+            class="w-full mt-6 bg-violet-600 hover:bg-violet-500 py-3 rounded-xl text-sm font-bold"
+          >
+            ဝယ်ယူမည်
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- KPAY FORM -->
+      <div
+        id="kpayFormBox"
+        class="hidden max-w-2xl mt-6 bg-violet-950/30 border border-violet-800/40 rounded-3xl p-6"
+      >
+
+        <h3 class="font-bold">
+          KPay ဖြင့် ငွေလွှဲပေးပို့လွှာ
+        </h3>
+
+        <div class="mt-4 space-y-3 text-sm">
+
+          <div class="bg-violet-900/30 rounded-xl p-3">
+            <span class="text-slate-400">လက်ခံသူအမည်:</span>
+            <span class="font-bold ml-2">Aung Chan Nyein</span>
+          </div>
+
+          <div class="bg-violet-900/30 rounded-xl p-3">
+            <span class="text-slate-400">KPay ဖုန်းနံပါတ်:</span>
+            <span class="font-bold ml-2">09660049053</span>
+          </div>
+
+          <div class="bg-violet-900/30 rounded-xl p-3">
+            <span class="text-slate-400">ပေးသွင်းရမည့် ပမာဏ:</span>
+            <span id="kpayAmountText" class="font-bold ml-2 text-violet-300">MMK</span>
+          </div>
+
+        </div>
+
+        <input
+          id="kpayRefInput"
+          type="text"
+          placeholder="KPay Transaction Reference Number"
+          class="w-full mt-5 bg-violet-900/50 border border-violet-700/50 rounded-xl px-4 py-3 text-sm focus:outline-none"
+        >
+
+        <button
+          onclick="submitKPayPayment()"
+          class="w-full mt-4 bg-emerald-600 hover:bg-emerald-500 py-3 rounded-xl text-sm font-bold"
+        >
+          <i class="fa-solid fa-paper-plane mr-2"></i>
+          ငွေလွှဲအချက်အလက် ပေးပို့မည်
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= ADMIN ================= -->
+    <section id="tab-admin" class="tab-content hidden">
+
+      <div class="mb-6">
+
+        <div class="text-xs text-violet-400 font-bold">
+          ADMIN GOVERNANCE
+        </div>
+
+        <h2 class="text-2xl font-bold mt-1">
+          Admin Governance Dashboard
+        </h2>
+
+        <p class="text-xs text-slate-400 mt-1">
+          ငွေပေးချေမှုနှင့် ခရက်ဒစ် စီမံခန့်ခွဲရေး
+        </p>
+
+      </div>
+
+
+      <div class="grid md:grid-cols-3 gap-4 mb-6">
+
+        <div class="bg-violet-950/30 border border-violet-800/40 rounded-2xl p-5">
+          <div class="text-xs text-slate-400">System</div>
+          <div class="text-lg font-bold text-emerald-400 mt-1">
+            Server Controlled
+          </div>
+        </div>
+
+        <div class="bg-violet-950/30 border border-violet-800/40 rounded-2xl p-5">
+          <div class="text-xs text-slate-400">Current User Credits</div>
+          <div id="profileCreditText" class="text-lg font-bold mt-1">
+            20 Credits
+          </div>
+        </div>
+
+        <div class="bg-violet-950/30 border border-violet-800/40 rounded-2xl p-5">
+          <div class="text-xs text-slate-400">Account</div>
+          <div class="text-lg font-bold mt-1">
+            Standard Tier
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="bg-violet-950/30 border border-violet-800/40 rounded-3xl p-5">
+
+        <h3 class="font-bold mb-4">
+          စစ်ဆေးရန် ကျန်ရှိသော KPay လွှဲစာများ
+        </h3>
+
+        <div id="adminPendingList" class="space-y-3"></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= PROFILE ================= -->
+    <section class="mt-10">
+
+      <div class="bg-violet-950/30 border border-violet-800/40 rounded-3xl p-5">
+
+        <div class="flex items-center justify-between gap-4">
+
+          <div class="flex items-center gap-4">
+
+            <div class="w-12 h-12 rounded-2xl bg-violet-600 flex items-center justify-center font-bold">
+              U
+            </div>
+
+            <div>
+              <div class="font-bold">အသုံးပြုသူ အကောင့်</div>
+              <div class="text-xs text-slate-400">
+                user@aistudio.com
+              </div>
+            </div>
+
+          </div>
+
+          <div class="text-right">
+            <div class="text-xs text-slate-400">Standard Tier User</div>
+            <div id="mobileCreditDisplay" class="text-violet-300 font-bold">
+              20
+            </div>
+            <div class="text-[10px] text-slate-500">Credits</div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="border-t border-violet-900/30 mt-12 py-8">
+
+    <div class="max-w-7xl mx-auto px-4 text-center">
+
+      <div class="font-bold">
+        AI Studio
+      </div>
+
+      <div class="text-xs text-slate-500 mt-2">
+        All-in-One AI Assistant
+      </div>
+
+      <div class="text-[10px] text-slate-600 mt-4">
+        © 2026 AI Studio. All rights reserved.
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- Your JavaScript -->
+  <script src="app.js"></script>
+
+</body>
+</html>
